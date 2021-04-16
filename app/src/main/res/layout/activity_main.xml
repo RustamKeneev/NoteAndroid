@@ -23,6 +23,114 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <LinearLayout
+        android:id="@+id/layout_search"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:background="@drawable/background_search"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_my_notes"
+        android:layout_marginStart="@dimen/_8sdp">
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_search"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            app:tint="@color/colorSearchIcon" />
+
+        <EditText
+            android:id="@+id/edit_text_search"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:background="@null"
+            android:includeFontPadding="false"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="@dimen/_14ssp"
+            android:hint="@string/search_notes"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_marginStart="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_note"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:clipToPadding="false"
+        android:paddingLeft="0dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_quick_actions"
+        app:layout_constraintTop_toBottomOf="@id/layout_search"
+        android:paddingRight="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingStart="0dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_quick_actions"
+        android:background="@color/colorQuickActionBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_add_note"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_add_outline"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            app:tint="@color/colorIcons" />
+
+        <ImageView
+            android:id="@+id/image_add_image"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_image"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            app:tint="@color/colorIcons"
+            android:layout_marginStart="@dimen/_16sdp" />
+
+        <ImageView
+            android:id="@+id/image_add_web_link"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_web_link"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            app:tint="@color/colorIcons"
+            android:layout_marginStart="@dimen/_16sdp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_add_main_note"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:background="@drawable/background_add_button"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_6sdp"
+        android:src="@drawable/ic_add"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        app:layout_constraintBottom_toTopOf="@id/layout_quick_actions"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layout_quick_actions"
+        app:tint="@color/purple_200" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
