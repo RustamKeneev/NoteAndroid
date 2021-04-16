@@ -7,6 +7,21 @@
     android:background="@color/purple_200"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/text_my_notes"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/my_notes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sdp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 
