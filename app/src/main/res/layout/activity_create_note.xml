@@ -119,6 +119,7 @@
                 android:layout_marginRight="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
+                android:padding="@dimen/_8sdp"
                 android:background="@null"
                 android:fontFamily="@font/ubuntu_regular"
                 android:gravity="top"
