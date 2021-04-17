@@ -72,8 +72,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         }
         final Note note = new Note();
         note.setTitle(editTextNoteTitle.getText().toString());
-        note.setTitle(editTextNoteSubTitle.getText().toString());
-        note.setTitle(editTextNote.getText().toString());
+        note.setSubTitle(editTextNoteSubTitle.getText().toString());
+        note.setNoteText(editTextNote.getText().toString());
         note.setDateTime(textDateTime.getText().toString());
 
 
