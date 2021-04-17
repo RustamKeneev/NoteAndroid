@@ -65,7 +65,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         if (editTextNoteTitle.getText().toString().trim().isEmpty()){
             Toast.makeText(this,"Note title can't be empty!",Toast.LENGTH_LONG).show();
             return;
-        }else  if (editTextNoteSubTitle.getText().toString().trim().isEmpty() &&
+        }else if (editTextNoteSubTitle.getText().toString().trim().isEmpty() &&
                 editTextNote.getText().toString().trim().isEmpty()){
             Toast.makeText(this,"Note can't be empty!",Toast.LENGTH_LONG).show();
             return;
