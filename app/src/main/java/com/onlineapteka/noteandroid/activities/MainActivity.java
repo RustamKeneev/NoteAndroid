@@ -1,18 +1,13 @@
-package com.onlineapteka.noteandroid;
+package com.onlineapteka.noteandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 
-import java.util.List;
+import com.onlineapteka.noteandroid.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivityForResult(
-                        new Intent(getApplicationContext(),CreateNoteActivity.class),
+                        new Intent(getApplicationContext(), CreateNoteActivity.class),
                         REQUEST_CODE_ADD_NOTE
                 );
             }

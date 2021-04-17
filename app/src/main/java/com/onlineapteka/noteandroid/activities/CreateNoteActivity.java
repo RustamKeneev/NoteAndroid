@@ -1,10 +1,12 @@
-package com.onlineapteka.noteandroid;
+package com.onlineapteka.noteandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.onlineapteka.noteandroid.R;
 
 public class CreateNoteActivity extends AppCompatActivity {
     private ImageView imageBack;
