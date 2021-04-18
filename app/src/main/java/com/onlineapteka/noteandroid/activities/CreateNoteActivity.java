@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.onlineapteka.noteandroid.R;
 import com.onlineapteka.noteandroid.database.NotesDatabase;
 import com.onlineapteka.noteandroid.entities.Note;
@@ -27,6 +31,9 @@ public class CreateNoteActivity extends AppCompatActivity {
     private EditText editTextNote;
     private TextView textDateTime;
     private ImageView imageSave;
+    private ImageView imageArrow;
+    private String selectedNoteColor;
+    private View viewSubtitleIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         editTextNote = findViewById(R.id.edit_text_note);
         textDateTime = findViewById(R.id.text_date_time);
         imageSave = findViewById(R.id.image_save);
+        viewSubtitleIndicator = findViewById(R.id.view_sub_title_indicator);
+//        imageArrow = findViewById(R.id.image_arrow);
 
         imageSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +68,11 @@ public class CreateNoteActivity extends AppCompatActivity {
 
         textDateTime.setText(new SimpleDateFormat("EEEE,dd MMMM yyyy HH:mm a",
                 Locale.getDefault()).format(new Date()));
+
+        selectedNoteColor = "#333333";
+
+        initMiscellaneous();
+        setSubtitleIndicatorColor();
     }
 
     private void saveNote(){
@@ -75,6 +89,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         note.setSubTitle(editTextNoteSubTitle.getText().toString());
         note.setNoteText(editTextNote.getText().toString());
         note.setDateTime(textDateTime.getText().toString());
+        note.setColor(selectedNoteColor);
 
 
         @SuppressLint("StaticFieldLeak")
@@ -94,5 +109,110 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         }
         new SaveNoteTask().execute();
+    }
+
+    private void initMiscellaneous(){
+        final LinearLayout layoutMiscellaneous = findViewById(R.id.layout_miscellaneous);
+        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
+        layoutMiscellaneous.findViewById(R.id.text_miscellaneous).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//                            imageArrow.setImageResource(R.drawable.ic_down_arrows);
+//                            imageArrow.setVisibility(View.VISIBLE);
+                        }else {
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                            imageArrow.setImageResource(R.drawable.ic_up_arrow);
+//                            imageArrow.setVisibility(View.GONE);
+                        }
+                    }
+                }
+        );
+        final ImageView imageView1 = layoutMiscellaneous.findViewById(R.id.image_color_one);
+        final ImageView imageView2 = layoutMiscellaneous.findViewById(R.id.image_color_two);
+        final ImageView imageView3 = layoutMiscellaneous.findViewById(R.id.image_color_three);
+        final ImageView imageView4 = layoutMiscellaneous.findViewById(R.id.image_color_four);
+        final ImageView imageView5 = layoutMiscellaneous.findViewById(R.id.image_color_five);
+
+        layoutMiscellaneous.findViewById(R.id.view_color_one).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedNoteColor = "#333333";
+                        imageView1.setImageResource(R.drawable.ic_done);
+                        imageView2.setImageResource(0);
+                        imageView3.setImageResource(0);
+                        imageView4.setImageResource(0);
+                        imageView5.setImageResource(0);
+                        setSubtitleIndicatorColor();
+                    }
+                }
+        );
+
+        layoutMiscellaneous.findViewById(R.id.view_color_two).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedNoteColor = "#FDBE3B";
+                        imageView1.setImageResource(0);
+                        imageView2.setImageResource(R.drawable.ic_done);
+                        imageView3.setImageResource(0);
+                        imageView4.setImageResource(0);
+                        imageView5.setImageResource(0);
+                        setSubtitleIndicatorColor();
+                    }
+                }
+        );
+
+        layoutMiscellaneous.findViewById(R.id.view_color_three).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedNoteColor = "#FF4842";
+                        imageView1.setImageResource(0);
+                        imageView2.setImageResource(0);
+                        imageView3.setImageResource(R.drawable.ic_done);
+                        imageView4.setImageResource(0);
+                        imageView5.setImageResource(0);
+                        setSubtitleIndicatorColor();
+                    }
+                }
+        );
+
+        layoutMiscellaneous.findViewById(R.id.view_color_four).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedNoteColor = "#3A52FC";
+                        imageView1.setImageResource(0);
+                        imageView2.setImageResource(0);
+                        imageView3.setImageResource(0);
+                        imageView4.setImageResource(R.drawable.ic_done);
+                        imageView5.setImageResource(0);
+                        setSubtitleIndicatorColor();
+                    }
+                }
+        );
+
+        layoutMiscellaneous.findViewById(R.id.view_color_five).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedNoteColor = "#000000";
+                        imageView1.setImageResource(0);
+                        imageView2.setImageResource(0);
+                        imageView3.setImageResource(0);
+                        imageView4.setImageResource(0);
+                        imageView5.setImageResource(R.drawable.ic_done);
+                        setSubtitleIndicatorColor();
+                    }
+                }
+        );
+    }
+    private void setSubtitleIndicatorColor(){
+        GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
+        gradientDrawable.setColor(Color.parseColor(selectedNoteColor));
     }
 }

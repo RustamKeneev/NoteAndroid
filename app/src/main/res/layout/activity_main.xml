@@ -35,8 +35,7 @@
         android:paddingRight="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_my_notes"
-        android:layout_marginStart="@dimen/_8sdp">
+        app:layout_constraintTop_toBottomOf="@id/text_my_notes">
 
         <ImageView
             android:contentDescription="@string/app_name"
