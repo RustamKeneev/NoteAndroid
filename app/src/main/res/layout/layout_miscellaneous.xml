@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_miscellaneous"
     android:background="@drawable/background_miscellaneous"
     app:behavior_peekHeight="@dimen/_40sdp"
@@ -146,6 +147,38 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_image_add"
+        android:layout_margin="@dimen/_12sdp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_36sdp"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_image"
+            android:tint="@color/colorIcons"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorIcons"
+            android:textSize="@dimen/_12ssp"
+            android:layout_gravity="center_vertical"
+            android:text="@string/add_image"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>

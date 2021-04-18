@@ -114,6 +114,18 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_12sdp" />
 
+            <ImageView
+                android:id="@+id/image_note"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_note_sub_title"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <EditText
                 android:id="@+id/edit_text_note"
                 android:layout_marginLeft="@dimen/_12sdp"
@@ -133,7 +145,7 @@
                 android:textColorHint="@color/colorTextHint"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edit_text_note_sub_title"
+                app:layout_constraintTop_toBottomOf="@id/image_note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
