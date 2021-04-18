@@ -2,6 +2,7 @@ package com.onlineapteka.noteandroid.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -14,12 +15,16 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +41,7 @@ import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class CreateNoteActivity extends AppCompatActivity {
 
@@ -50,6 +56,9 @@ public class CreateNoteActivity extends AppCompatActivity {
     private ImageView imageSave;
     private ImageView imageNote;
     private View viewSubtitleIndicator;
+    private TextView textViewWebUrl;
+    private LinearLayout linearLayoutWebUrl;
+    private AlertDialog alertDialogAddUrl;
 
     private String selectedNoteColor;
     private String selectedImagePath;
@@ -70,6 +79,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         imageSave = findViewById(R.id.image_save);
         viewSubtitleIndicator = findViewById(R.id.view_sub_title_indicator);
         imageNote = findViewById(R.id.image_note);
+        textViewWebUrl = findViewById(R.id.text_web_url);
+        linearLayoutWebUrl = findViewById(R.id.layout_web_url);
 
         imageSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +122,10 @@ public class CreateNoteActivity extends AppCompatActivity {
         note.setDateTime(textDateTime.getText().toString());
         note.setColor(selectedNoteColor);
         note.setImagePath(selectedImagePath);
+
+        if (linearLayoutWebUrl.getVisibility() == View.VISIBLE){
+            note.setWebLink(textViewWebUrl.getText().toString());
+        }
 
 
         @SuppressLint("StaticFieldLeak")
@@ -252,6 +267,15 @@ public class CreateNoteActivity extends AppCompatActivity {
                     }
                 }
         );
+        layoutMiscellaneous.findViewById(R.id.layout_add_url).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetBehavior.setState( BottomSheetBehavior.STATE_COLLAPSED);
+                        showAddUrlDialog();
+                    }
+                }
+        );
     }
     private void setSubtitleIndicatorColor(){
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
@@ -312,5 +336,46 @@ public class CreateNoteActivity extends AppCompatActivity {
             cursor.close();
         }
         return filePath;
+    }
+
+    private void showAddUrlDialog(){
+        if (alertDialogAddUrl == null){
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
+            View view = LayoutInflater.from(this)
+                    .inflate(R.layout.layout_add_url,
+                            (ViewGroup) findViewById(R.id.layout_add_url_container));
+            builder.setView(view);
+            alertDialogAddUrl = builder.create();
+            if (alertDialogAddUrl.getWindow() !=null){
+                alertDialogAddUrl.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            final EditText editTextUrl = view.findViewById(R.id.edit_url);
+            editTextUrl.requestFocus();
+
+            view.findViewById(R.id.text_add).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (editTextUrl.getText().toString().trim().isEmpty()){
+                        Toast.makeText(CreateNoteActivity.this,"Enter URL",
+                                Toast.LENGTH_LONG).show();
+                    }else  if (!Patterns.WEB_URL.matcher(editTextUrl.getText().toString()).matches()){
+                        Toast.makeText(CreateNoteActivity.this,"Enter valid URL",
+                                Toast.LENGTH_LONG).show();
+                    }else {
+                        textViewWebUrl.setText(editTextUrl.getText().toString());
+                        linearLayoutWebUrl.setVisibility(View.VISIBLE);
+                        alertDialogAddUrl.dismiss();
+                    }
+                }
+            });
+
+            view.findViewById(R.id.text_cancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialogAddUrl.dismiss();
+                }
+            });
+        }
+        alertDialogAddUrl.show();
     }
 }
