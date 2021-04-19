@@ -211,7 +211,40 @@
             android:textSize="@dimen/_12ssp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_delete_note"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_36sdp"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_delete"
+            android:layout_gravity="center_vertical"
+            android:tint="@color/colorDelete"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:includeFontPadding="false"
+            android:layout_gravity="center_vertical"
+            android:text="@string/delete_note"
+            android:textColor="@color/colorDelete"
+            android:textSize="@dimen/_12ssp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>
