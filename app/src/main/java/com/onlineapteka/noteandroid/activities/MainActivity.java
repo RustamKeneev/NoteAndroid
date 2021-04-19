@@ -9,8 +9,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.onlineapteka.noteandroid.R;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements NoteListeners {
     private RecyclerView notesRecyclerView;
     private List<Note> noteList;
     private NoteAdapter noteAdapter;
+    private EditText editTextSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,26 @@ public class MainActivity extends AppCompatActivity implements NoteListeners {
 
     private void initviews() {
         imageAddMainNote = findViewById(R.id.image_add_main_note);
+        editTextSearch = findViewById(R.id.edit_text_search);
+
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                noteAdapter.cancelTimer();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (noteList.size() != 0){
+                     noteAdapter.searchNotes(s.toString());
+                }
+            }
+        });
 
         imageAddMainNote.setOnClickListener(new View.OnClickListener() {
             @Override

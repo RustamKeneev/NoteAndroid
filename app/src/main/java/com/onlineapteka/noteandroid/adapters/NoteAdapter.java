@@ -3,6 +3,8 @@ package com.onlineapteka.noteandroid.adapters;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +19,22 @@ import com.onlineapteka.noteandroid.R;
 import com.onlineapteka.noteandroid.entities.Note;
 import com.onlineapteka.noteandroid.listeners.NoteListeners;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder>{
 
-     private List<Note> noteList;
+     private List<Note> notes;
      private NoteListeners noteListeners;
+     private Timer timer;
+     private List<Note> notesSource;
 
     public NoteAdapter(List<Note> noteList, NoteListeners noteListeners) {
-        this.noteList = noteList;
+        this.notes = noteList;
         this.noteListeners = noteListeners;
-        notifyDataSetChanged();
+        notesSource = noteList;
     }
 
     @NonNull
@@ -44,18 +51,18 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
-        holder.onBind(noteList.get(position));
+        holder.onBind(notes.get(position));
         holder.layoutNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                noteListeners.onNoteClicked(noteList.get(position),position);
+                noteListeners.onNoteClicked(notes.get(position),position);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return noteList.size();
+        return notes.size();
     }
 
     @Override
@@ -99,6 +106,39 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
            }else {
                roundedImageView.setVisibility(View.GONE);
            }
+        }
+    }
+
+    public void searchNotes(final String searchKeyword){
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (searchKeyword.trim().isEmpty()){
+                    notes = notesSource;
+                }else {
+                    ArrayList<Note> temp = new ArrayList<>();
+                    for (Note note : notesSource){
+                        if (note.getTitle().toLowerCase().contains(searchKeyword.toLowerCase())
+                        || note.getSubTitle().toLowerCase().contains(searchKeyword.toLowerCase())
+                        || note.getNoteText().toLowerCase().contains(searchKeyword.toLowerCase())){
+                            temp.add(note);
+                        }
+                    }
+                    notes = temp;
+                }
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                         notifyDataSetChanged();
+                    }
+                });
+            }
+        },50);
+    }
+    public void cancelTimer(){
+        if (timer !=null){
+            timer.cancel();
         }
     }
 }
