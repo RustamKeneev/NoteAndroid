@@ -126,6 +126,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <ImageView
+                android:id="@+id/image_remove_image"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/background_delete"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_4sdp"
+                android:src="@drawable/ic_delete"
+                android:tint="@color/white"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="@id/image_note"
+                app:layout_constraintTop_toTopOf="@id/image_note"
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="@dimen/_26sdp"
+                tools:ignore="UseAppTint" />
+
             <LinearLayout
                 android:id="@+id/layout_web_url"
                 android:layout_marginLeft="@dimen/_12sdp"
@@ -136,7 +153,8 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/image_note"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="UseCompoundDrawables">
 
                 <TextView
                     android:id="@+id/text_web_url"
@@ -147,6 +165,15 @@
                     android:textSize="@dimen/_14ssp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/image_remove_web_url"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_delete"
+                    android:tint="@color/colorDelete"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    tools:ignore="UseAppTint" />
 
             </LinearLayout>
 
