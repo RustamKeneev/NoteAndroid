@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteAndroid</string>
+    <string name="my_notes">Мои заметки</string>
+    <string name="search_notes">Искать в заметках</string>
+    <string name="note_title">Заголовок заметки</string>
+    <string name="note_subtitle">Подзаголовок примечания</string>
+    <string name="type_note_here">Введите примечание здесь ...</string>
+    <string name="miscellaneous">Разнообразный</string>
+    <string name="pick_color">Выбрать цвет</string>
+    <string name="add_image">Добавить изображение</string>
+    <string name="add_url">Добавить URL</string>
+    <string name="enter_url">Введите URL</string>
+    <string name="add">Добавлять</string>
+    <string name="cancel_dialog">Отмена</string>
+    <string name="delete_note">Удалить заметку</string>
+    <string name="are_you_sure_you_want_to_delete_this_note">Вы уверены, что хотите удалить эту заметку</string>
+</resources>

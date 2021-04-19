@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoteAndroid</string>
+    <string name="my_notes">Менин эскертүүлөрүм</string>
+    <string name="search_notes">Эскертүүлөрдү издөө</string>
+    <string name="note_title">Эскертменин аталышы</string>
+    <string name="note_subtitle">Жазуу субтитри</string>
+    <string name="type_note_here">Бул жерге жазууну териңиз...</string>
+    <string name="miscellaneous">Ар кандай</string>
+    <string name="pick_color">Түстү тандоо</string>
+    <string name="add_image">Сүрөт кошуу</string>
+    <string name="add_url">URL кошуу</string>
+    <string name="enter_url">URL киргизиңиз</string>
+    <string name="add">Кошуу</string>
+    <string name="cancel_dialog">Жокко чыгаруу</string>
+    <string name="delete_note">Эскертмени жок кылуу</string>
+    <string name="are_you_sure_you_want_to_delete_this_note">Сиз бул белги өчүрүүнү чын эле каалап жатасызбы</string>
+</resources>
